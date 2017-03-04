@@ -1,0 +1,16 @@
+<div class="result-container">
+    <div class="">
+        <a ng-href="/">HOME</a>
+    </div>
+    <div class="result-card" ng-repeat="result in results">
+        <h3 class="header"><span></span>{{$index+1}}) {{result.respid}}</h3>
+        <div class="body">
+            <p data-label="Project ID:" class="result">{{result.projectid}}</p>
+            <p data-label="Status:" class="result">{{result.status}}</p>
+            <p data-label="Country:" class="result">{{result.country}}</p>
+            <p data-label="IP:" class="result">{{result.ip}}</p>
+            <p data-label="Start Time:" class="result">{{result.starttime}}</p>
+            <p data-label="End Time:" class="result">{{result.endtime}}</p>
+        </div>
+    </div>
+</div>

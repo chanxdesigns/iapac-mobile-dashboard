@@ -1,0 +1,8 @@
+<div class="page">
+    <div class="button" total-center show-projects ng-click="displayCountriesList()">Select Country</div>
+    <div class="projectsListWrapper" total-center ng-class="countriesListState">
+        <ul class="projectsList">
+            <li ng-repeat="country in countriesList"><a class="projectid" ng-click="storeCountry(country.Country, 'results')">{{country.Country}}</a></li>
+        </ul>
+    </div>
+</div>
