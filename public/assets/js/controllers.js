@@ -11,7 +11,7 @@ function homeCtrl($scope, ValueStoreService, ProjectsFactory, $location) {
     $scope.projectsListState = "hidden";
     // Display Projects List
     $scope.displayProjectsList = function () {
-        $scope.projectsListState = "show";
+        $scope.projectsListState = "animated ownAnimated zoomIn";
     }
     /**
      * Store Value and Navigate to corresponding view
@@ -34,7 +34,7 @@ function statusCtrl($scope, ValueStoreService, $location) {
    $scope.statusListState = "hidden";
     // Display Status List
     $scope.displayStatusList = function () {
-        $scope.statusListState = "show";
+        $scope.statusListState = "animated ownAnimated zoomIn";
     }
 
     $scope.storeStatus = function (status, view) {
@@ -57,7 +57,7 @@ function countryCtrl ($scope, ValueStoreService, CountriesFactory, $location) {
     $scope.countriesListState = "hidden";
     // Change Countries Dropdown List Display State
     $scope.displayCountriesList = function () {
-        $scope.countriesListState = "show";
+        $scope.countriesListState = "animated ownAnimated zoomIn";
     }
     // Store Countries in ValueStoreService
     // And navigate to the results page
@@ -76,9 +76,14 @@ mbApac.controller('ResultsCtrl', resultsCtrl);
 resultsCtrl.$inject = ['$scope','ValueStoreService','ResultsFactory'];
 function resultsCtrl ($scope, ValueStoreService, ResultsFactory) {
     var projectMeta = ValueStoreService.getValues();
+    $scope.animate = "hidden";
     $scope.results = ResultsFactory.query({
         projectid: projectMeta.projectid,
         status: projectMeta.status,
         country: projectMeta.country
+    }, function (c) {
+        if (c.length) {
+            $scope.animate = "animated slideInRight";
+        }
     })
 }

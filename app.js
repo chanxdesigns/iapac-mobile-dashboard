@@ -9,8 +9,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// Body Parser i.e HTTP Post & Get Value parser
-app.use(bodyParser.urlencoded({ extended: false }));
+// Declaring Static Assets Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Render the default homepage

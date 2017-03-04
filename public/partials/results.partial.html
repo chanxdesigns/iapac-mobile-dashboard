@@ -1,8 +1,8 @@
+<header>
+    <a ng-href="/">HOME</a>
+</header>
 <div class="result-container">
-    <div class="">
-        <a ng-href="/">HOME</a>
-    </div>
-    <div class="result-card" ng-repeat="result in results">
+    <div class="result-card" ng-repeat="result in results" ng-class="animate">
         <h3 class="header"><span></span>{{$index+1}}) {{result.respid}}</h3>
         <div class="body">
             <p data-label="Project ID:" class="result">{{result.projectid}}</p>
