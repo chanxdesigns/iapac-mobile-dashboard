@@ -34,7 +34,7 @@ body {
   .projectsListWrapper {
     position: fixed;
     z-index: 999;
-    height: 60%;
+    height: 80%;
     width: 90%;
     background: white;
     padding: 20px;
@@ -46,10 +46,13 @@ body {
       list-style-type: none;
       li {
         border-bottom: 1px solid darken(white,5%);
+        &:last-of-type {
+          border-bottom: none;//
+        }
       }
       .projectid {
         display: block;
-        padding: 15px;
+        padding: 20px;
         color: #444;
         font-weight: 700;
         font-size: 20px;
