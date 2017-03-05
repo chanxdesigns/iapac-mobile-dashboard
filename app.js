@@ -11,6 +11,8 @@ app.set('view engine', 'ejs');
 
 // Declaring Static Assets Folder
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'bower_components')));
+console.log(path.join(__dirname, 'bower_components'));
 
 // Render the default homepage
 app.use('/', index);
