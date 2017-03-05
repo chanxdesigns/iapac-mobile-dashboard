@@ -6,10 +6,10 @@ var mysql = require('mysql');
  */
 
 var conn = mysql.createPool({
-    host: process.env.MYSQL_HOST || "43.225.55.90",
-    user: process.env.MYSQL_USER || "cresezg1_chanx",
-    password: process.env.MYSQL_PASS || "shekhar12",
-    database: process.env.DATABASE || "cresezg1_laravel"
+    host: process.env.MYSQL_HOST || "localhost",
+    user: process.env.MYSQL_USER || "root",
+    password: process.env.MYSQL_PASS || "",
+    database: process.env.DATABASE || "test_iapac"
 });
 
 module.exports = conn;

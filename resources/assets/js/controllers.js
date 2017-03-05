@@ -19,8 +19,7 @@ function homeCtrl($scope, ValueStoreService, ProjectsFactory, $location) {
      * @param view View Name
      */
     $scope.storeAndNavigate = function (projectid, view) {
-        var key = "projectid";
-        ValueStoreService.setValues(key, projectid);
+        ValueStoreService.setValues("projectid", projectid);
         $location.url(view);
     }
 }
@@ -38,8 +37,7 @@ function statusCtrl($scope, ValueStoreService, $location) {
     }
 
     $scope.storeStatus = function (status, view) {
-        var key = "status";
-        ValueStoreService.setValues(key,status);
+        ValueStoreService.setValues("status",status);
         $location.url(view);
     }
 }
@@ -49,10 +47,11 @@ function statusCtrl($scope, ValueStoreService, $location) {
  */
 
 mbApac.controller('CountryCtrl', countryCtrl);
-countryCtrl.$inject = ['$scope','ValueStoreService','CountriesFactory','$location'];
-function countryCtrl ($scope, ValueStoreService, CountriesFactory, $location) {
+countryCtrl.$inject = ['$scope','ValueStoreService','CountriesFactory','$location','$window'];
+function countryCtrl ($scope, ValueStoreService, CountriesFactory, $location, $window) {
     // Get Countries List
-    $scope.countriesList = CountriesFactory.query();
+    $scope.countriesList = CountriesFactory.query({projectid: $window.localStorage.getItem("projectid")});
+    console.log($scope.countriesList);
     // Get Countries Dropdown List Display State
     $scope.countriesListState = "hidden";
     // Change Countries Dropdown List Display State
@@ -62,8 +61,7 @@ function countryCtrl ($scope, ValueStoreService, CountriesFactory, $location) {
     // Store Countries in ValueStoreService
     // And navigate to the results page
     $scope.storeCountry = function (country, view) {
-        var key = "country";
-        ValueStoreService.setValues(key, country);
+        ValueStoreService.setValues("country", country);
         $location.url(view);
     }
 }
@@ -73,14 +71,13 @@ function countryCtrl ($scope, ValueStoreService, CountriesFactory, $location) {
  */
 
 mbApac.controller('ResultsCtrl', resultsCtrl);
-resultsCtrl.$inject = ['$scope','ValueStoreService','ResultsFactory'];
-function resultsCtrl ($scope, ValueStoreService, ResultsFactory) {
-    var projectMeta = ValueStoreService.getValues();
+resultsCtrl.$inject = ['$scope','$window', 'ResultsFactory'];
+function resultsCtrl ($scope, $window, ResultsFactory) {
     $scope.animate = "hidden";
     $scope.results = ResultsFactory.query({
-        projectid: projectMeta.projectid,
-        status: projectMeta.status,
-        country: projectMeta.country
+        projectid: $window.localStorage.getItem('projectid'),
+        status: $window.localStorage.getItem('status'),
+        country: $window.localStorage.getItem('country')
     }, function (c) {
         if (c.length) {
             $scope.animate = "animated slideInRight";

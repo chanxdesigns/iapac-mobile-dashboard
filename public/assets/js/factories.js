@@ -16,7 +16,7 @@ function projectsFactory($resource) {
 mbApp.factory('CountriesFactory', countriesFactory);
 countriesFactory.$inject = ['$resource'];
 function countriesFactory($resource) {
-    return $resource('/api/countries')
+    return $resource('/api/country/:projectid')
 }
 
 /**

@@ -6,13 +6,13 @@ var mbApp = angular.module('mbServices', []);
  */
 mbApp.service('ValueStoreService', valueStoreService);
 function valueStoreService() {
-    this._statesValue = {};
+    //this._statesValue = {};
     this.setValues = function (key, value) {
         if (key && value) {
-            this._statesValue[key] = value;
+            window.localStorage.setItem(key, value);
         }
     }
-    this.getValues = function () {
-        return this._statesValue;
-    }
+    // this.getValues = function () {
+    //     return this._statesValue;
+    // }
 }

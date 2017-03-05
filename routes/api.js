@@ -23,6 +23,7 @@ router.get('/projectids', function (req, res) {
 
 router.get('/countries', function (req, res) {
     db.getConnection(function (err, conn) {
+        if (err) res.status(500).end(err.message);
         conn.query('SELECT DISTINCT Country FROM projects_list', function (err, results) {
             // Release connection
             conn.release();
@@ -40,8 +41,9 @@ router.get('/countries', function (req, res) {
  * Get All Responses of a specific Project ID
  */
 
-router.get('/:projectid', function (req, res) {
+router.get('/all/:projectid', function (req, res) {
     db.getConnection(function (err, conn) {
+        if (err) res.status(500).end(err.message);
         conn.query('SELECT * FROM resp_counters WHERE projectid = ? ORDER BY created_at DESC', req.params.projectid, function (err, results) {
             // Release connection
             conn.release();
@@ -61,11 +63,22 @@ router.get('/:projectid', function (req, res) {
                         endtime: endtime.format('ddd, MMM D YYYY, hh:mm A')
                     }
                 });
-
                 res.json(results);
             }
         });
     });
+});
+
+router.get('/country/:projectid', function (req, res) {
+    db.getConnection(function (err, conn) {
+        if (err) res.status(500).end(err.message);
+        conn.query('SELECT DISTINCT Languageid FROM resp_counters WHERE projectid = ?', req.params.projectid, function (err, results) {
+            if (err) res.status(500).end(err.message);
+            // Release connection
+            conn.release();
+            res.json(results);
+        })
+    })
 });
 
 /**
@@ -77,6 +90,7 @@ router.get('/:projectid/:status/:country', function (req, res) {
         country = req.params.country;
 
     db.getConnection(function (err, conn) {
+        if (err) res.status(500).end(err.message);
         conn.query('SELECT * FROM resp_counters WHERE projectid = ? AND status = ? AND Languageid = ? ORDER BY created_at DESC', [projectid, status, country], function (err, results) {
             // Release connection
             conn.release();

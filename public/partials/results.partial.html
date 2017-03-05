@@ -1,6 +1,9 @@
 <header>
     <a ng-href="/">HOME</a>
 </header>
+<div class="project-meta">
+    <p class="total-results">Total Results: {{results.length}}</p>
+</div>
 <div class="result-container">
     <div class="result-card" ng-repeat="result in results" ng-class="animate">
         <h3 class="header"><span></span>{{$index+1}}) {{result.respid}}</h3>
