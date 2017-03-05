@@ -19,6 +19,8 @@
     "angular": "^1.6.2",
     "angular-route": "^1.6.2",
     "angular-resource": "^1.6.2",
-    "animate.css": "^3.5.2"
+    "animate.css": "^3.5.2",
+    "angular-loaders": "^1.0.0",
+    "loaders.css": "^0.1.2"
   }
 }

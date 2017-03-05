@@ -1,4 +1,4 @@
-var mbApac = angular.module('mbApac', ['ngRoute','mbControllers','mbFactories','mbDirectives','mbServices']);
+var mbApac = angular.module('mbApac', ['ngRoute','mbControllers','mbFactories','mbDirectives','mbServices', 'alexjoffroy.angular-loaders']);
 
 mbApac.config(function ($routeProvider) {
     $routeProvider

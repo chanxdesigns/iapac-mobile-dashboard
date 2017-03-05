@@ -14,6 +14,14 @@ body {
 .show {
   dislay: block; }
 
+.ajax-wrapper {
+  position: fixed;
+  height: 50px;
+  width: 57px;
+  z-index: 9999; }
+  .ajax-wrapper div[class*=" ball-"] div {
+    background: #19b5fe; }
+
 .ownAnimated {
   -webkit-animation-duration: 0.2s;
   animation-duration: 0.2s; }
@@ -114,6 +122,12 @@ header {
   background: whitesmoke;
   overflow-x: hidden;
   overflow-y: scroll; }
+
+.err-container {
+  position: fixed; }
+  .err-container .empty-error-msg {
+    color: #D91E18;
+    text-align: center; }
 
 .result-card {
   background: white;

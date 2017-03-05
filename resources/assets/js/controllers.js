@@ -73,14 +73,27 @@ function countryCtrl ($scope, ValueStoreService, CountriesFactory, $location, $w
 mbApac.controller('ResultsCtrl', resultsCtrl);
 resultsCtrl.$inject = ['$scope','$window', 'ResultsFactory'];
 function resultsCtrl ($scope, $window, ResultsFactory) {
+    // The UI animation
     $scope.animate = "hidden";
+    // Ajax Loading Animation
+    $scope.ajax_loader = "show";
+    // Display the error msg on empty result set
+    $scope.err = "hidden";
+    // Get Results from Server
     $scope.results = ResultsFactory.query({
         projectid: $window.localStorage.getItem('projectid'),
         status: $window.localStorage.getItem('status'),
         country: $window.localStorage.getItem('country')
     }, function (c) {
         if (c.length) {
+            $scope.ajax_loader = "hidden";
             $scope.animate = "animated slideInRight";
+        }
+        else {
+            // Remove loader even if data is empty
+            // As because the querying of data is complete
+            $scope.ajax_loader = "hidden";
+            $scope.err = "show";
         }
     })
 }
