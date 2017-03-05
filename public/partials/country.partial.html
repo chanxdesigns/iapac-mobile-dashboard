@@ -1,8 +1,8 @@
 <div class="page">
-    <div class="button" total-center show-projects ng-click="displayCountriesList()">Select Country</div>
+    <div class="button purple" total-center show-projects ng-click="displayCountriesList()">Select Country</div>
     <div class="projectsListWrapper" total-center ng-class="countriesListState">
         <ul class="projectsList">
-            <li ng-if="countriesList.length" ng-repeat="country in countriesList"><a class="projectid" ng-click="storeCountry(country.Languageid, 'results')">{{country.Languageid}}</a></li>
+            <li ng-if="countriesList.length" ng-repeat="country in countriesList"><a class="projectid" ng-click="storeCountry(country.Languageid, 'status')">{{country.Languageid}}</a></li>
             <!--<li ng-if="!countriesList.length">Sorry, Project Not Started</li>-->
         </ul>
     </div>

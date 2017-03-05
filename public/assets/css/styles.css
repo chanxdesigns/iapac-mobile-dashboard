@@ -51,8 +51,10 @@ header {
   font-size: 30px;
   font-weight: 700;
   text-align: center; }
-  .page .button.green {
-    background: #36D7B7; }
+  .page .button.purple {
+    background: #6b36a1; }
+  .page .button.cabaret {
+    background: #D2527F; }
 .page .projectsListWrapper {
   position: fixed;
   z-index: 999;

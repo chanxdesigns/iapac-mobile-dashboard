@@ -51,7 +51,6 @@ countryCtrl.$inject = ['$scope','ValueStoreService','CountriesFactory','$locatio
 function countryCtrl ($scope, ValueStoreService, CountriesFactory, $location, $window) {
     // Get Countries List
     $scope.countriesList = CountriesFactory.query({projectid: $window.localStorage.getItem("projectid")});
-    console.log($scope.countriesList);
     // Get Countries Dropdown List Display State
     $scope.countriesListState = "hidden";
     // Change Countries Dropdown List Display State

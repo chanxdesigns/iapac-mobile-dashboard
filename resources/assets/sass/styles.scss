@@ -58,8 +58,11 @@ header {
     font-size: 30px;
     font-weight: 700;
     text-align: center;
-    &.green {
-      background: #36D7B7;
+    &.purple {
+      background: lighten(#663399,2%);
+    }
+    &.cabaret {
+      background: #D2527F;
     }
   }
   .projectsListWrapper {
